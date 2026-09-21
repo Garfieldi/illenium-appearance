@@ -131,6 +131,19 @@ RegisterNUICallback("rotate_right", function(_, cb)
     client.pedTurn(cache.ped, -10.0)
 end)
 
+RegisterNUICallback("appearance_randomize", function(_, cb)
+    local ped = cache.ped
+    local success = false
+    if client.randomizer then
+        success = client.randomizer.apply(ped)
+    end
+    cb({
+        success = success,
+        appearanceSettings = client.getAppearanceSettings(),
+        appearanceData = client.getPedAppearance(ped)
+    })
+end)
+
 RegisterNUICallback("get_theme_configuration", function(_, cb)
     cb(Config.Theme)
 end)
