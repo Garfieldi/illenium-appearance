@@ -51,6 +51,7 @@ interface OptionsProps {
   handleExit: () => void;
   handleRandomize: () => void;
   enableExit: boolean;
+  showRandomize?: boolean;
 }
 
 const Container = styled.div`
@@ -243,7 +244,8 @@ const Options: React.FC<OptionsProps> = ({
   handleExit,
   handleSave,
   handleRandomize,
-  enableExit
+  enableExit,
+  showRandomize
 }) => {
   return (
     <Container>
@@ -278,9 +280,11 @@ const Options: React.FC<OptionsProps> = ({
       <ToggleOption active={rotate.right} onClick={handleRotateRight}>
         <FaUndo size={20} />
       </ToggleOption>
-      <Option onClick={handleRandomize} title="Randomize appearance">
-        <FaRandom size={20} />
-      </Option>
+      {showRandomize && (
+        <Option onClick={handleRandomize} title="Randomize appearance">
+          <FaRandom size={20} />
+        </Option>
+      )}
       <Option onClick={handleSave} title="Save">
         <FaSave size={20} />
       </Option>

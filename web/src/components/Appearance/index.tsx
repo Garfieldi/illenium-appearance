@@ -673,6 +673,7 @@ const Appearance = () => {
                   handleExit={handleExitModal}
                   handleRandomize={handleRandomize}
                   enableExit={config.enableExit}
+                  showRandomize={!!(config.headBlend && config.faceFeatures)}
                 />
               </Wrapper>
             </animated.div>
